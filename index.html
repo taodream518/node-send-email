@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email</title>
+</head>
+
+<body>
+  <div style="margin: 30px auto;max-width: 600px;border: 3px dashed #dff1cb;padding: 10px 20px;">
+
+    <h2 style="text-align: center;">
+      今天是我们一起走过来的<br
+      >第<span style="color:red"> {{dayData.countDay}} </span>天
+      <div>
+        <p style="max-width: 300px;margin: 20px auto;font-size: 20px;width: 200px;border: 1px dashed #09f;padding: 10px 10px;background: #f9f9f9;">
+          {{dayData.format}}
+        </p>
+      </div>
+    </h2>
+    
+    <h3>天气状况：</h3>
+    <hr>
+    <div style="display: flex;align-items: center;height: 300px;overflow: hidden;margin-top: 30px;">
+      <div style="height: 100%;flex: 1;">
+        <div style="display:flex;align-items: center;">
+          <div style="flex:1;text-align: center;font-size: 40px;"><strong>{{weatherData.weather}}</strong></div>
+          <div style="flex:1;text-align: center;"><img style="width: 90px;" src="{{weatherData.icon}}"></div>
+        </div>
+        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;">温度：<span>{{weatherData.temperature}} ℃</span></p>
+        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;"><span>{{weatherData.humidness}}</span></p>
+        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;">提示：<span>{{weatherData.tips}}</span></p>
+      </div>
+      <div style="height: 100%;flex: 1;text-align: center;overflow: hidden;">
+        <img style="display: block;margin: 0 auto;" src="{{weatherData.avator}}">
+      </div>
+    </div>
+    <hr>
+    <div class="one">
+      <div style="margin:20px auto;border-radius: 1%;overflow: hidden;">
+        <img style="display: block;max-width: 600px;" src="{{oneData.img}}">
+      </div>
+      <div sytle="background: #f9f9f9;padding: 20px 10px;line-height: 20px;">
+        <p style="text-indent: 2em;background: #c8eaca;border-radius: 2px;
+        padding: 8px;line-height: 28px;">{{oneData.text}}</p>
+      </div>
+    </div>
+    <hr>
+    <hr>
+  </div>
+
+</body>
+</html>
