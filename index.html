@@ -1,54 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email</title>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>天气预报</title>
 
-<body>
-  <div style="margin: 30px auto;max-width: 600px;border: 3px dashed #dff1cb;padding: 10px 20px;">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-    <h2 style="text-align: center;">
-      今天是我们一起走过来的<br
-      >第<span style="color:red"> {{dayData.countDay}} </span>天
-      <div>
-        <p style="max-width: 300px;margin: 20px auto;font-size: 20px;width: 200px;border: 1px dashed #09f;padding: 10px 10px;background: #f9f9f9;">
-          {{dayData.format}}
-        </p>
-      </div>
-    </h2>
-    
-    <h3>天气状况：</h3>
-    <hr>
-    <div style="display: flex;align-items: center;height: 300px;overflow: hidden;margin-top: 30px;">
-      <div style="height: 100%;flex: 1;">
-        <div style="display:flex;align-items: center;">
-          <div style="flex:1;text-align: center;font-size: 40px;"><strong>{{weatherData.weather}}</strong></div>
-          <div style="flex:1;text-align: center;"><img style="width: 90px;" src="{{weatherData.icon}}"></div>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                color: #333;
+                background-color: #f8f8f8;
+            }
+
+            .container {
+                max-width: 500px;
+                margin: 30px auto;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+
+            .header {
+                height: 200px;
+                background-size: cover;
+                background-position: center center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+            }
+
+            .subject {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .subject .date {
+                font-size: 15px;
+                text-align: right;
+                color: #fff;
+            }
+
+            .one-text {
+                padding: 12px 20px;
+                font-size: 15px;
+                color: #fff;
+                margin-top: 12px;
+            }
+
+            .content {
+                display: flex;
+                font-size: 16px;
+                justify-content: center;
+                padding: 30px;
+            }
+
+            .content .left {
+                flex: 1;
+            }
+
+            .content .weather {
+                font-size: 20px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                height: 40px;
+            }
+
+            .content .left img {
+                width: 40px;
+            }
+
+            .content .right {
+                flex: 0 0 120px;
+                width: 120px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .content .right img {
+                width: 100%;
+                vertical-align: middle;
+            }
+
+            .footer {
+                margin: 20px 0;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header" style="background-image: url({{oneData.img}})">
+                <div class="subject">
+                    <div>我们一起走过的第{{dayData.countDay}}天</div>
+                    <div class="date">{{dayData.format}}</div>
+                </div>
+                <div class="one-text">{{oneData.text}}</div>
+            </div>
+
+            <div class="content">
+                <div class="left">
+                    <div class="weather">
+                        <span> {{weatherData.weather}}</span>
+                        <img src="{{weatherData.icon}}" />
+                    </div>
+                    <div>{{weatherData.temperature}} ℃</div>
+                    <div>{{weatherData.humidness}}</div>
+                    <div>{{weatherData.tips}}</div>
+                </div>
+
+                <div class="right">
+                    <img src="{{weatherData.avator}}" alt="" />
+                </div>
+            </div>
+
+            <div class="footer">©copyright coder-tao</div>
         </div>
-        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;">温度：<span>{{weatherData.temperature}} ℃</span></p>
-        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;"><span>{{weatherData.humidness}}</span></p>
-        <p style="font-size:14px;background:#f6f6f6;padding: 5px;border-radius: 2px;">提示：<span>{{weatherData.tips}}</span></p>
-      </div>
-      <div style="height: 100%;flex: 1;text-align: center;overflow: hidden;">
-        <img style="display: block;margin: 0 auto;" src="{{weatherData.avator}}">
-      </div>
-    </div>
-    <hr>
-    <div class="one">
-      <div style="margin:20px auto;border-radius: 1%;overflow: hidden;">
-        <img style="display: block;max-width: 600px;" src="{{oneData.img}}">
-      </div>
-      <div sytle="background: #f9f9f9;padding: 20px 10px;line-height: 20px;">
-        <p style="text-indent: 2em;background: #c8eaca;border-radius: 2px;
-        padding: 8px;line-height: 28px;">{{oneData.text}}</p>
-      </div>
-    </div>
-    <hr>
-    <hr>
-  </div>
-
-</body>
+    </body>
 </html>
